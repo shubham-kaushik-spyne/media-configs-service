@@ -12,7 +12,7 @@ const { SERVICE_BASE_PATH } = require('../api/constant/base-path');
 
 const SERVICE_BASE_PATH_VERSION_NEUTRAL = `${SERVICE_BASE_PATH}`;
 module.exports.routes = {
-  
+
 
   /***************************************************************************
   *                                                                          *

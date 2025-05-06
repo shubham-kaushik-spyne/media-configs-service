@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 module.exports = new mongoose.Schema({
   notificationType: {
@@ -14,7 +14,7 @@ module.exports = new mongoose.Schema({
     type: String
   },
   cc: {
-    type: [String], 
+    type: [String],
     required: false
   }
 }, { timestamps: true });
@@ -43,7 +43,7 @@ cc: ["All the emails in the CC"]
 notificationType: "raiseException",
 from: "spyneOwner",
 to: ["spyneFinanceTeam", "spyneLegalTeam", "ankit.khandelwal@spyne.ai"],
-cc: [""]  
+cc: [""]
 }
 
 4. contractRejection

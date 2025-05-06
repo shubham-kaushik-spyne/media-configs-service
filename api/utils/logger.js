@@ -80,15 +80,5 @@ logger.setRequestId = (requestId) => {
 };
 
 
-function createHeader(message){
-  if (typeof message === 'string' ) {return ['MESSAGE'];}
-  let columnArray = [];
-  for (let key of message){
-    columnArray.push(key.toUpperCase());
-  }
-
-  return columnArray;
-
-}
 
 module.exports = logger;

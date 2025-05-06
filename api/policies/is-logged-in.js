@@ -56,22 +56,22 @@ module.exports = async function isLoggedIn(req, res, proceed) {
   }
   req.token = response; // This is the decrypted token or the payload you provided
   let loggedInUser;
- 
+
   if(response.role==='client'){
-   loggedInUser=  await Client.findOne({
+    loggedInUser=  await Client.findOne({
       id: req.token.userId,
-    })
-    let tempMerchant = await Merchant.findOne({ code: "b2c" });
+    });
+    let tempMerchant = await Merchant.findOne({ code: 'b2c' });
     loggedInUser.merchant = [tempMerchant];
-    
+
   }else{
-  loggedInUser= await User.findOne({
-    id: req.token.userId,
-  }).populate('merchant');
-}
-    // If the logged-in user has gone missing, log a warning,
-    // wipe the user id from the requesting user agent's session,
-    // and then send the "unauthorized" response.
+    loggedInUser= await User.findOne({
+      id: req.token.userId,
+    }).populate('merchant');
+  }
+  // If the logged-in user has gone missing, log a warning,
+  // wipe the user id from the requesting user agent's session,
+  // and then send the "unauthorized" response.
   if (!loggedInUser) {
     sails.log.warn('Somehow, the user record for the logged-in user has gone missing....');
     delete req.session.userId;
@@ -101,13 +101,9 @@ module.exports = async function isLoggedIn(req, res, proceed) {
   if (loggedInUser.lastSeenAt < now - MS_TO_BUFFER) {
     if(loggedInUser.role==='client'){
 
-      let timeStampUpdateResponse = await Client.updateOne({ id: loggedInUser.id }).set({ lastSeenAt: now });
-;// _∏_  (Meanwhile...)
-    }else{
-      let timeStampUpdateResponse = await User.updateOne({ id: loggedInUser.id }).set({ lastSeenAt: now });
-
+      // _∏_  (Meanwhile...)
     }
-   
+
   }// ﬁ
 
   // If this is a GET request, then also expose an extra view local (`<%= me %>`).

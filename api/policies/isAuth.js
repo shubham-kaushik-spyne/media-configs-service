@@ -24,8 +24,7 @@ module.exports = async function isAuth(req, res, proceed) {
 
     // if we reach here, at least one of them is there, now check for authenticity [There is no posibility to send auth key in both body and queryParam]
 
-    const rdi = sails.getDatastore('default'); // from datastores.js 
-    const authKey = authKeyQueryParam ? authKeyQueryParam : authKeyBody;
+    const rdi = sails.getDatastore('default'); // from datastores.js
 
     const queryToExecute = ``;
 
@@ -36,7 +35,7 @@ module.exports = async function isAuth(req, res, proceed) {
       throw Error('Invalid Auth key');
     }
 
-    req.me = result['rows'][0]
+    req.me = result['rows'][0];
 
     //sails.log(result['rows']);
     // res.locals.me = result['rows'][0]
@@ -51,4 +50,3 @@ module.exports = async function isAuth(req, res, proceed) {
 
   }
 };
-  

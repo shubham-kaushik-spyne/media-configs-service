@@ -26,7 +26,9 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "eslint": "5.16.0",
+    "@eslint/js": "^9.26.0",
+    "eslint": "^9.26.0",
+    "globals": "^16.0.0",
     "husky": "^9.1.7",
     "nodemon": "^2.0.15"
   },
@@ -36,6 +38,7 @@
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo",
+    "fix:lint": "eslint . --fix",
     "prepare": "husky"
   },
   "main": "app.js",

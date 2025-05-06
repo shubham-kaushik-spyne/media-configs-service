@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 module.exports = new mongoose.Schema({
   user_id: {
@@ -7,11 +7,11 @@ module.exports = new mongoose.Schema({
     unique: true
   },
   user_role: {
-      type: String,
-      required: true
+    type: String,
+    required: true
   },
   active_roles:{
     type: Object,
     required: true
   }
-},{timestamps: true, strict: false})
+},{timestamps: true, strict: false});
